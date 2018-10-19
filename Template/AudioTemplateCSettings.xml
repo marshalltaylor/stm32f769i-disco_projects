@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cdtprojectproperties>
+<section name="org.eclipse.cdt.internal.ui.wizards.settingswizards.IncludePaths">
+<language name="S">
+<includepath>Inc</includepath>
+<includepath>Drivers/STM32F7xx_HAL_Driver/Inc</includepath>
+<includepath>Drivers/STM32F7xx_HAL_Driver/Inc/Legacy</includepath>
+<includepath>Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM7/r0p1</includepath>
+<includepath>Middlewares/ST/STM32_USB_Device_Library/Core/Inc</includepath>
+<includepath>Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc</includepath>
+<includepath>Drivers/CMSIS/Device/ST/STM32F7xx/Include</includepath>
+<includepath>Middlewares/Third_Party/FatFs/src</includepath>
+<includepath>Middlewares/Third_Party/FreeRTOS/Source/include</includepath>
+<includepath>Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS</includepath>
+<includepath>Drivers/CMSIS/Include</includepath>
+
+</language>
+<language name="C Source File">
+<includepath>Inc</includepath>
+<includepath>Drivers/STM32F7xx_HAL_Driver/Inc</includepath>
+<includepath>Drivers/STM32F7xx_HAL_Driver/Inc/Legacy</includepath>
+<includepath>Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM7/r0p1</includepath>
+<includepath>Middlewares/ST/STM32_USB_Device_Library/Core/Inc</includepath>
+<includepath>Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc</includepath>
+<includepath>Drivers/CMSIS/Device/ST/STM32F7xx/Include</includepath>
+<includepath>Middlewares/Third_Party/FatFs/src</includepath>
+<includepath>Middlewares/Third_Party/FreeRTOS/Source/include</includepath>
+<includepath>Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS</includepath>
+<includepath>Drivers/CMSIS/Include</includepath>
+
+</language>
+<language name="Object File">
+
+</language>
+<language name="Assembly Source File">
+
+</language>
+<language name="s">
+
+</language>
+</section>
+<section name="org.eclipse.cdt.internal.ui.wizards.settingswizards.Macros">
+<language name="S">
+<macro>
+<name>__weak</name><value>__attribute__((weak))</value>
+</macro>
+<macro>
+<name>__packed</name><value>__attribute__((__packed__))</value>
+</macro>
+<macro>
+<name>USE_HAL_DRIVER</name><value/>
+</macro>
+<macro>
+<name>STM32F769xx</name><value/>
+</macro>
+
+</language>
+<language name="C Source File">
+<macro>
+<name>__weak</name><value>__attribute__((weak))</value>
+</macro>
+<macro>
+<name>__packed</name><value>__attribute__((__packed__))</value>
+</macro>
+<macro>
+<name>USE_HAL_DRIVER</name><value/>
+</macro>
+<macro>
+<name>STM32F769xx</name><value/>
+</macro>
+
+</language>
+<language name="Object File">
+
+</language>
+<language name="Assembly Source File">
+
+</language>
+<language name="s">
+
+</language>
+</section>
+</cdtprojectproperties>
