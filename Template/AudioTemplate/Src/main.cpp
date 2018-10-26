@@ -58,6 +58,7 @@
 #include "usbd_def.h"
 #include "usbd_desc.h"
 #include "usbd_cdc_if.h"
+#include "blinkino.h"
 /* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/
@@ -73,6 +74,7 @@ SAI_HandleTypeDef hsai_BlockB1;
 MMC_HandleTypeDef hmmc2;
 
 osThreadId defaultTaskHandle;
+osThreadId rxTaskHandle;
 
 /* USER CODE BEGIN PV */
 /* Private variables ---------------------------------------------------------*/
@@ -90,6 +92,7 @@ static void MX_I2C1_Init(void);
 static void MX_DFSDM1_Init(void);
 static void MX_SDMMC2_MMC_Init(void);
 void StartDefaultTask(void const * argument);
+void StartRxTask(void const * argument);
 
 /* USER CODE BEGIN PFP */
 /* Private function prototypes -----------------------------------------------*/
@@ -168,6 +171,8 @@ int main(void)
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
+  osThreadDef(rxTask, StartRxTask, osPriorityNormal, 0, 128);
+  rxTaskHandle = osThreadCreate(osThread(rxTask), NULL);
   /* USER CODE END RTOS_THREADS */
 
   /* USER CODE BEGIN RTOS_QUEUES */
@@ -507,11 +512,26 @@ void StartDefaultTask(void const * argument)
     //{
     //	txBuffer[i - 0x20] = i;
     //}
-    CDC_Transmit_HS("hello world!", 8);
+    //CDC_Transmit_HS("hello world!", 8);
 	//USBD_CDC_TransmitPacket(&USBD_Device);
+    //printf("Hello World!\n");
 
   }
   /* USER CODE END 5 */ 
+}
+
+void StartRxTask(void const * argument)
+{
+ArduinoSketch arduinoObject1();
+  /* Infinite loop */
+  arduinoObject1.begin();
+  for(;;)
+  {
+    arduinoObject1.loop();
+
+
+  }
+  /* USER CODE END 5 */
 }
 
 /**
