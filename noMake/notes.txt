@@ -1,0 +1,60 @@
+***Compile c files:
+/cygdrive/c/STM32/gcc-arm-none-eabi/bin/arm-none-eabi-g++ -v -c -O1 -mcpu=cortex-m7 -g -gdwarf-2 -mfpu=fpv5-d16 -mfloat-abi=hard -fsingle-precision-constant -IFW_F7_V1.12.0/CMSIS/Include -IFW_F7_V1.12.0/STM32F7xx/Include/ -Iinclude/ -std=c++11 -DSTM32F769xx src/main.cpp src/fakeLib.cpp FW_F7_V1.12.0/system_stm32f7xx.c
+
+-DUSE_HAL_DRIVER 
+
+***run core assembly
+/cygdrive/c/STM32/gcc-arm-none-eabi/bin/arm-none-eabi-as -c -mcpu=cortex-m7 -g -gdwarf-2 -mfpu=fpv5-d16 -mfloat-abi=hard src/startup_stm32f769xx.s -o build/startup_stm32f769xx.o
+
+***Link
+/cygdrive/c/STM32/gcc-arm-none-eabi/bin/arm-none-eabi-gcc -v -mcpu=cortex-m7 -g -gdwarf-2 -mfpu=fpv5-d16 -mfloat-abi=hard -specs=nano.specs -specs=nosys.specs -TSTM32F769NIHx_FLASH.ld -lc -lm -lnosys -Wl,-Map=build/output.map,--cref -Wl,--gc-sections fakeLib.o main.o system_stm32f7xx.o build/startup_stm32f769xx.o -o build/output.elf
+
+***Clean
+rm *.o && rm -rf build && mkdir build && ls -l build
+
+***This is cmsis project building:
+/cygdrive/c/STM32/gcc-arm-none-eabi/bin/arm-none-eabi-g++ -c -O1 -g -gdwarf-2 -mfpu=fpv5-d16 -mfloat-abi=hard -fsingle-precision-constant -IFW_F7_V1.12.0/CMSIS/Include -IFW_F7_V1.12.0/STM32F7xx/Include/ FW_F7_V1.12.0/system_stm32f7xx.c
+
+/cygdrive/c/STM32/gcc-arm-none-eabi/bin/arm-none-eabi-g++ -c -O1 -g -Wall -mcpu=cortex-m7 -mthumb -mfpu=fpv5-d16 -mfloat-abi=hard -fsingle-precision-constant -IFW_F7_V1.12.0/CMSIS/Device/ST/STM32F7xx/Include/ FW_F7_V1.12.0/system_stm32f7xx.c
+
+/cygdrive/c/STM32/gcc-arm-none-eabi/bin/arm-none-eabi-g++ -c -O1 -g -Wall -mcpu=cortex-m7 -mthumb -mfpu=fpv5-d16 -mfloat-abi=hard -fsingle-precision-constant -I"C:\STM32\STM32Cube_FW_F7_V1.12.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include" -Iinclude/ src/main.cpp src/fakeLib.cpp C:/STM32/STM32Cube_FW_F7_V1.12.0/Drivers/CMSIS/Device/ST/STM32F7xx/Source/Templates/system_stm32f7xx.c
+
+/cygdrive/c/STM32/gcc-arm-none-eabi/bin/arm-none-eabi-as -c -mcpu=cortex-m7 -mthumb -mfpu=fpv5-d16 -mfloat-abi=hard src/startup_stm32f769xx.s -o startup_stm32f769xx.o
+
+/cygdrive/c/STM32/gcc-arm-none-eabi/bin/arm-none-eabi-gcc -mcpu=cortex-m7 -mthumb -mfpu=fpv5-d16 -mfloat-abi=hard -specs=nano.specs -TSTM32F769NIHx_FLASH.ld -lc -lm -lnosys -Wl,-Map=output.map,--cref -Wl,--gc-sections startup_stm32f769xx.o main.o fakeLib.o -o output.elf
+
+-mcpu=cortex-m7 -mthumb -mfpu=fpv5-d16 -mfloat-abi=hard -specs=nano.specs -TSTM32F769NIHx_FLASH.ld -lc -lm -lnosys -Wl,-Map=output.map,--cref -Wl,--gc-sections
+
+-mcpu=cortex-m7 -mthumb -mfpu=fpv5-d16 -mfloat-abi=hard
+
+$(BUILD_DIR)/$(TARGET).elf: $(OBJECTS) Makefile
+	$(CC) $(OBJECTS) $(LDFLAGS) -o $@
+	$(SZ) $@
+
+
+$(BUILD_DIR)/%.o: %.s Makefile | $(BUILD_DIR)
+	$(AS) -c $(CFLAGS) $< -o $@
+
+
+
+
+
+/cygdrive/c/STM32/gcc-arm-none-eabi/bin/arm-none-eabi-gcc-ar src/main.o src/fakeLib.o
+
+
+
+
+
+
+/cygdrive/c/STM32/gcc-arm-none-eabi/bin/arm-none-eabi-g++ -E -CC -x c++ -w  -g -Wall -ffunction-sections -fdata-sections -nostdlib -fno-exceptions -felide-constructors -std=gnu++0x -fno-rtti -mthumb -mcpu=cortex-m4 -fsingle-precision-constant -Iinclude/ src/main.cpp src/fakeLib.cpp
+
+
+
+"E:\ArduinoConfigurations\arduino-1.8.1_stock_teensy\hardware\teensy/../tools/arm/bin/arm-none-eabi-g++" -E -CC -x c++ -w  -g -Wall -ffunction-sections -fdata-sections -nostdlib -fno-exceptions -felide-constructors -std=gnu++0x -fno-rtti -mthumb -mcpu=cortex-m4 -fsingle-precision-constant -D__MK20DX256__ -DTEENSYDUINO=134 -DARDUINO=10801 -DF_CPU=96000000 -DUSB_SERIAL -DLAYOUT_US_ENGLISH "-IE:\ArduinoConfigurations\arduino-1.8.1_stock_teensy\hardware\teensy\avr\cores\teensy3" "C:\Users\marshall\AppData\Local\Temp\arduino_build_875191\sketch\TeensyViewSender.ino.cpp" -o "nul"
+
+
+
+"E:\ArduinoConfigurations\arduino-1.8.1_teensy_release_test\hardware\teensy/../tools/arm/bin/arm-none-eabi-g++" -c -O1 -g -Wall -ffunction-sections -fdata-sections -nostdlib -MMD -fno-exceptions -felide-constructors -std=gnu++0x -fno-rtti -mthumb -mcpu=cortex-m4 -fsingle-precision-constant -D__MK20DX256__ -DTEENSYDUINO=134 -DARDUINO=10801 -DF_CPU=96000000 -DUSB_SERIAL -DLAYOUT_US_ENGLISH "-IE:\ArduinoConfigurations\arduino-1.8.1_teensy_release_test\hardware\teensy\avr\cores\teensy3" "E:\ArduinoConfigurations\arduino-1.8.1_teensy_release_test\hardware\teensy\avr\cores\teensy3\new.cpp" -o "C:\Users\marshall\AppData\Local\Temp\arduino_build_602877\core\new.cpp.o"
+
+
+"E:\ArduinoConfigurations\arduino-1.8.1_teensy_release_test\hardware\teensy/../tools/arm/bin/arm-none-eabi-gcc-ar" rcs "C:\Users\marshall\AppData\Local\Temp\arduino_build_602877/core/core.a" "C:\Users\marshall\AppData\Local\Temp\arduino_build_602877\core\HardwareSerial3.cpp.o"
