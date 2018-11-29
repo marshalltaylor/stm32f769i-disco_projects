@@ -55,14 +55,14 @@ void SystemClock_Config(void)
 	RCC_OscInitStruct.PLL.PLLQ = 12;
 	if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
 	{
-		_Error_Handler(__FILE__, __LINE__);
+		_Error_Handler((char*)__FILE__, __LINE__);
 	}
 
 	/**Activate the Over-Drive mode 
 	*/
 	if (HAL_PWREx_EnableOverDrive() != HAL_OK)
 	{
-		_Error_Handler(__FILE__, __LINE__);
+		_Error_Handler((char*)__FILE__, __LINE__);
 	}
 
 	/**Initializes the CPU, AHB and APB busses clocks 
@@ -76,7 +76,7 @@ void SystemClock_Config(void)
 
 	if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_6) != HAL_OK)
 	{
-		_Error_Handler(__FILE__, __LINE__);
+		_Error_Handler((char*)__FILE__, __LINE__);
 	}
 
 	PeriphClkInitStruct.PeriphClockSelection = RCC_PERIPHCLK_DFSDM1|RCC_PERIPHCLK_SAI1
@@ -95,7 +95,7 @@ void SystemClock_Config(void)
 	PeriphClkInitStruct.Sdmmc2ClockSelection = RCC_SDMMC2CLKSOURCE_CLK48;
 	if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInitStruct) != HAL_OK)
 	{
-		_Error_Handler(__FILE__, __LINE__);
+		_Error_Handler((char*)__FILE__, __LINE__);
 	}
 
 	/**Configure the Systick interrupt time 
@@ -129,7 +129,7 @@ void MX_DFSDM1_Init(void)
 	hdfsdm1_channel1.Init.RightBitShift = 0x00;
 	if (HAL_DFSDM_ChannelInit(&hdfsdm1_channel1) != HAL_OK)
 	{
-		_Error_Handler(__FILE__, __LINE__);
+		_Error_Handler((char*)__FILE__, __LINE__);
 	}
 
 	hdfsdm1_channel5.Instance = DFSDM1_Channel5;
@@ -147,7 +147,7 @@ void MX_DFSDM1_Init(void)
 	hdfsdm1_channel5.Init.RightBitShift = 0x00;
 	if (HAL_DFSDM_ChannelInit(&hdfsdm1_channel5) != HAL_OK)
 	{
-		_Error_Handler(__FILE__, __LINE__);
+		_Error_Handler((char*)__FILE__, __LINE__);
 	}
 
 }
@@ -167,21 +167,21 @@ void MX_I2C1_Init(void)
 	hi2c1.Init.NoStretchMode = I2C_NOSTRETCH_DISABLE;
 	if (HAL_I2C_Init(&hi2c1) != HAL_OK)
 	{
-		_Error_Handler(__FILE__, __LINE__);
+		_Error_Handler((char*)__FILE__, __LINE__);
 	}
 
 	/**Configure Analogue filter 
 	*/
 	if (HAL_I2CEx_ConfigAnalogFilter(&hi2c1, I2C_ANALOGFILTER_ENABLE) != HAL_OK)
 	{
-		_Error_Handler(__FILE__, __LINE__);
+		_Error_Handler((char*)__FILE__, __LINE__);
 	}
 
 	/**Configure Digital filter 
 	*/
 	if (HAL_I2CEx_ConfigDigitalFilter(&hi2c1, 0) != HAL_OK)
 	{
-		_Error_Handler(__FILE__, __LINE__);
+		_Error_Handler((char*)__FILE__, __LINE__);
 	}
 
 }
@@ -203,7 +203,7 @@ void MX_SAI1_Init(void)
 	hsai_BlockA1.Init.TriState = SAI_OUTPUT_NOTRELEASED;
 	if (HAL_SAI_InitProtocol(&hsai_BlockA1, SAI_PCM_SHORT, SAI_PROTOCOL_DATASIZE_16BIT, 1) != HAL_OK)
 	{
-		_Error_Handler(__FILE__, __LINE__);
+		_Error_Handler((char*)__FILE__, __LINE__);
 	}
 
 	hsai_BlockB1.Instance = SAI1_Block_B;
@@ -217,7 +217,7 @@ void MX_SAI1_Init(void)
 	hsai_BlockB1.Init.TriState = SAI_OUTPUT_NOTRELEASED;
 	if (HAL_SAI_InitProtocol(&hsai_BlockB1, SAI_I2S_STANDARD, SAI_PROTOCOL_DATASIZE_16BIT, 2) != HAL_OK)
 	{
-		_Error_Handler(__FILE__, __LINE__);
+		_Error_Handler((char*)__FILE__, __LINE__);
 	}
 
 }
@@ -235,12 +235,12 @@ void MX_SDMMC2_MMC_Init(void)
 	hmmc2.Init.ClockDiv = 0;
 	if (HAL_MMC_Init(&hmmc2) != HAL_OK)
 	{
-		_Error_Handler(__FILE__, __LINE__);
+		_Error_Handler((char*)__FILE__, __LINE__);
 	}
 
 	if (HAL_MMC_ConfigWideBusOperation(&hmmc2, SDMMC_BUS_WIDE_4B) != HAL_OK)
 	{
-		_Error_Handler(__FILE__, __LINE__);
+		_Error_Handler((char*)__FILE__, __LINE__);
 	}
 
 }
