@@ -20,7 +20,6 @@
 #define ARDUINO_MAIN
 #include "Arduino.h"
 
-
 // Weak empty variant initialization function.
 // May be redefined by variant files.
 void initVariant() __attribute__((weak));
@@ -53,25 +52,17 @@ void initVariant() { }
 int main( void )
 {
   initVariant();
-
 #if defined(USBCON)
   usbd_interface_init();
 #endif
+  setup();
 
-  //setup();
-	pinMode(D13, OUTPUT);
   for (;;)
   {
 #if defined(CORE_CALLBACK)
     CoreCallback();
 #endif
-    //loop();
-    if (serialEventRun) serialEventRun();
-	digitalWrite(D13, 1);
-	delay(1000);
-	digitalWrite(D13, 0);
-	delay(1000);
+    loop();
   }
-
   return 0;
 }

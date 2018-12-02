@@ -52,9 +52,14 @@ $(ARDUINO_REPO_DIR)/system/Drivers/CMSIS/Device/ST/STM32F7xx/Source/Templates/gc
 #sketch.cpp \
 
 PROJECT_C_SOURCES = \
-main.cpp
+main.cpp \
+sketch.cpp \
+Src/BlinkerPanel.cpp \
+$(ARDUINO_REPO_DIR)/variants/DISCO_F769I/PeripheralPins.c \
+$(ARDUINO_REPO_DIR)/variants/DISCO_F769I/variant.cpp
 
 PROJECT_C_INCLUDES = \
+$(ARDUINO_REPO_DIR)/variants/DISCO_F769I \
 . \
 Inc
 
@@ -108,9 +113,9 @@ $(ARDUINO_REPO_DIR)/cores/arduino/IPAddress.cpp \
 $(ARDUINO_REPO_DIR)/cores/arduino/itoa.c \
 $(ARDUINO_REPO_DIR)/cores/arduino/new.cpp \
 $(ARDUINO_REPO_DIR)/cores/arduino/pins_arduino.c \
-$(ARDUINO_REPO_DIR)/cores/arduino/Print.cpp \
-$(ARDUINO_REPO_DIR)/cores/arduino/RingBuffer.cpp \
 $(ARDUINO_REPO_DIR)/cores/arduino/Stream.cpp \
+$(ARDUINO_REPO_DIR)/cores/arduino/RingBuffer.cpp \
+$(ARDUINO_REPO_DIR)/cores/arduino/Print.cpp \
 $(ARDUINO_REPO_DIR)/cores/arduino/syscalls.c \
 $(ARDUINO_REPO_DIR)/cores/arduino/Tone.cpp \
 $(ARDUINO_REPO_DIR)/cores/arduino/WInterrupts.cpp \
@@ -121,8 +126,6 @@ $(ARDUINO_REPO_DIR)/cores/arduino/wiring_shift.c \
 $(ARDUINO_REPO_DIR)/cores/arduino/wiring_time.c \
 $(ARDUINO_REPO_DIR)/cores/arduino/WMath.cpp \
 $(ARDUINO_REPO_DIR)/cores/arduino/WString.cpp\
-$(ARDUINO_REPO_DIR)/variants/DISCO_F769I/PeripheralPins.c \
-$(ARDUINO_REPO_DIR)/variants/DISCO_F769I/variant.cpp
 
 ARDUINO_CORE_INCLUDES = \
 $(ARDUINO_REPO_DIR)/cores/arduino \
@@ -259,6 +262,100 @@ $(ARDUINO_REPO_DIR)/cores/arduino/stm32/LL/stm32yyxx_ll_usb.c \
 $(ARDUINO_REPO_DIR)/cores/arduino/stm32/LL/stm32yyxx_ll_utils.c
 
 
+#$(ARDUINO_REPO_DIR)/system/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal.c \
+
+NOTINUSEHAL_C_INCLUDES = \
+$(ARDUINO_REPO_DIR)/system/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_adc.c \
+$(ARDUINO_REPO_DIR)/system/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_adc_ex.c \
+$(ARDUINO_REPO_DIR)/system/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_can.c \
+$(ARDUINO_REPO_DIR)/system/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_cec.c \
+$(ARDUINO_REPO_DIR)/system/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_cortex.c \
+$(ARDUINO_REPO_DIR)/system/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_crc.c \
+$(ARDUINO_REPO_DIR)/system/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_crc_ex.c \
+$(ARDUINO_REPO_DIR)/system/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_cryp.c \
+$(ARDUINO_REPO_DIR)/system/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_cryp_ex.c \
+$(ARDUINO_REPO_DIR)/system/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_dac.c \
+$(ARDUINO_REPO_DIR)/system/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_dac_ex.c \
+$(ARDUINO_REPO_DIR)/system/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_dcmi.c \
+$(ARDUINO_REPO_DIR)/system/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_dcmi_ex.c \
+$(ARDUINO_REPO_DIR)/system/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_dfsdm.c \
+$(ARDUINO_REPO_DIR)/system/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_dma.c \
+$(ARDUINO_REPO_DIR)/system/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_dma_ex.c \
+$(ARDUINO_REPO_DIR)/system/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_dma2d.c \
+$(ARDUINO_REPO_DIR)/system/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_dsi.c \
+$(ARDUINO_REPO_DIR)/system/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_eth.c \
+$(ARDUINO_REPO_DIR)/system/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_flash.c \
+$(ARDUINO_REPO_DIR)/system/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_flash_ex.c \
+$(ARDUINO_REPO_DIR)/system/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_gpio.c \
+$(ARDUINO_REPO_DIR)/system/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_hash.c \
+$(ARDUINO_REPO_DIR)/system/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_hash_ex.c \
+$(ARDUINO_REPO_DIR)/system/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_hcd.c \
+$(ARDUINO_REPO_DIR)/system/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_i2c.c \
+$(ARDUINO_REPO_DIR)/system/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_i2c_ex.c \
+$(ARDUINO_REPO_DIR)/system/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_i2s.c \
+$(ARDUINO_REPO_DIR)/system/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_irda.c \
+$(ARDUINO_REPO_DIR)/system/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_iwdg.c \
+$(ARDUINO_REPO_DIR)/system/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_jpeg.c \
+$(ARDUINO_REPO_DIR)/system/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_lptim.c \
+$(ARDUINO_REPO_DIR)/system/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_ltdc.c \
+$(ARDUINO_REPO_DIR)/system/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_ltdc_ex.c \
+$(ARDUINO_REPO_DIR)/system/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_mdios.c \
+$(ARDUINO_REPO_DIR)/system/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_mmc.c \
+$(ARDUINO_REPO_DIR)/system/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_msp_template.c \
+$(ARDUINO_REPO_DIR)/system/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_nand.c \
+$(ARDUINO_REPO_DIR)/system/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_nor.c \
+$(ARDUINO_REPO_DIR)/system/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_pcd.c \
+$(ARDUINO_REPO_DIR)/system/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_pcd_ex.c \
+$(ARDUINO_REPO_DIR)/system/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_pwr.c \
+$(ARDUINO_REPO_DIR)/system/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_pwr_ex.c \
+$(ARDUINO_REPO_DIR)/system/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_qspi.c \
+$(ARDUINO_REPO_DIR)/system/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_rcc.c \
+$(ARDUINO_REPO_DIR)/system/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_rcc_ex.c \
+$(ARDUINO_REPO_DIR)/system/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_rng.c \
+$(ARDUINO_REPO_DIR)/system/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_rtc.c \
+$(ARDUINO_REPO_DIR)/system/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_rtc_ex.c \
+$(ARDUINO_REPO_DIR)/system/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_sai.c \
+$(ARDUINO_REPO_DIR)/system/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_sai_ex.c \
+$(ARDUINO_REPO_DIR)/system/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_sd.c \
+$(ARDUINO_REPO_DIR)/system/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_sdram.c \
+$(ARDUINO_REPO_DIR)/system/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_smartcard.c \
+$(ARDUINO_REPO_DIR)/system/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_smartcard_ex.c \
+$(ARDUINO_REPO_DIR)/system/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_smbus.c \
+$(ARDUINO_REPO_DIR)/system/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_spdifrx.c \
+$(ARDUINO_REPO_DIR)/system/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_spi.c \
+$(ARDUINO_REPO_DIR)/system/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_sram.c \
+$(ARDUINO_REPO_DIR)/system/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_tim.c \
+$(ARDUINO_REPO_DIR)/system/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_tim_ex.c \
+$(ARDUINO_REPO_DIR)/system/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_timebase_rtc_alarm_template.c \
+$(ARDUINO_REPO_DIR)/system/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_timebase_rtc_wakeup_template.c \
+$(ARDUINO_REPO_DIR)/system/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_timebase_tim_template.c \
+$(ARDUINO_REPO_DIR)/system/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_uart.c \
+$(ARDUINO_REPO_DIR)/system/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_usart.c \
+$(ARDUINO_REPO_DIR)/system/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_wwdg.c \
+$(ARDUINO_REPO_DIR)/system/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_ll_adc.c \
+$(ARDUINO_REPO_DIR)/system/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_ll_crc.c \
+$(ARDUINO_REPO_DIR)/system/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_ll_dac.c \
+$(ARDUINO_REPO_DIR)/system/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_ll_dma.c \
+$(ARDUINO_REPO_DIR)/system/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_ll_dma2d.c \
+$(ARDUINO_REPO_DIR)/system/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_ll_exti.c \
+$(ARDUINO_REPO_DIR)/system/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_ll_fmc.c \
+$(ARDUINO_REPO_DIR)/system/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_ll_gpio.c \
+$(ARDUINO_REPO_DIR)/system/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_ll_i2c.c \
+$(ARDUINO_REPO_DIR)/system/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_ll_lptim.c \
+$(ARDUINO_REPO_DIR)/system/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_ll_pwr.c \
+$(ARDUINO_REPO_DIR)/system/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_ll_rcc.c \
+$(ARDUINO_REPO_DIR)/system/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_ll_rng.c \
+$(ARDUINO_REPO_DIR)/system/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_ll_rtc.c \
+$(ARDUINO_REPO_DIR)/system/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_ll_sdmmc.c \
+$(ARDUINO_REPO_DIR)/system/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_ll_spi.c \
+$(ARDUINO_REPO_DIR)/system/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_ll_tim.c \
+$(ARDUINO_REPO_DIR)/system/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_ll_usart.c \
+$(ARDUINO_REPO_DIR)/system/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_ll_usb.c \
+$(ARDUINO_REPO_DIR)/system/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_ll_utils.c \
+$(ARDUINO_REPO_DIR)/system/Drivers/STM32F7xx_HAL_Driver/Inc \
+$(ARDUINO_REPO_DIR)/system/Drivers/STM32F7xx_HAL_Driver/Src
+
+
 #$(ARDUINO_REPO_DIR)/cores/arduino/stm32/LL
 #$(ARDUINO_REPO_DIR)/cores/arduino/stm32/HAL
 
@@ -285,23 +382,21 @@ $(ARDUINO_REPO_DIR)/system/STM32F7xx
 #HAL_C_SOURCES
 #HAL_C_INCLUDES
 
-#$(ARDUINO_LIB_C_SOURCES) \
-
-
 # C sources
 C_SOURCES = \
 $(CMSIS_SOURCES) \
 $(PROJECT_C_SOURCES) \
+$(ARDUINO_LIB_C_SOURCES) \
 $(ARDUINO_CORE_C_SOURCES) \
 $(HAL_C_SOURCES)
 
-# C includes
-C_INCLUDES = \
-$(CMSIS_INCLUDES) \
-$(PROJECT_C_INCLUDES) \
-$(ARDUINO_LIB_INCLUDES) \
-$(ARDUINO_CORE_INCLUDES) \
-$(HAL_C_INCLUDES)
+## C includes
+#C_INCLUDES = \
+#$(CMSIS_INCLUDES) \
+#$(PROJECT_C_INCLUDES) \
+#$(ARDUINO_LIB_INCLUDES) \
+#$(ARDUINO_CORE_INCLUDES) \
+#$(HAL_C_INCLUDES)
 
 # AS includes
 #AS_INCLUDES = \
@@ -326,7 +421,7 @@ CPPFLAGS = $(CFLAGS) -std=c++11
 
 # Message behavior
 # -Werror -fsyntax-only -fmax-errors=1 -w
-CFLAGS += -Werror -fmax-errors=1
+CFLAGS += -fmax-errors=1
 
 # assembler
 ASFLAGS = -mcpu=cortex-m7 -mthumb -mfloat-abi=hard -mfpu=fpv5-d16 -g
@@ -347,7 +442,7 @@ all: make_directories $(TARGET_EXEC) $(BUILD_DIR)/output.hex $(BUILD_DIR)/output
 
 #CMSIS_OBJECTS
 CMSIS_OBJECTS = $(addprefix $(BUILD_DIR)/CMSIS/,$(patsubst %S,%o,$(patsubst %s,%o,$(patsubst %c,%o,$(notdir $(CMSIS_SOURCES))))))
-vpath %.c $(sort $(dir $(CMSIS_SOURCES)))
+vpath %.c $(sort $(dir $(CMSIS_OBJECTS)))
 vpath %.S $(sort $(dir $(CMSIS_SOURCES)))
 vpath %.s $(sort $(dir $(CMSIS_SOURCES)))
 
@@ -358,9 +453,9 @@ vpath %.cpp $(sort $(dir $(PROJECT_C_SOURCES)))
 vpath %.s $(sort $(dir $(PROJECT_C_SOURCES)))
 
 #ARDUINO_LIB_OBJECTS
-#ARDUINO_LIB_OBJECTS = $(addprefix $(BUILD_DIR)/ARDUINO_LIB/,$(patsubst %c,%o,$(patsubst %cpp,%o,$(notdir $(ARDUINO_LIB_C_SOURCES)))))
-#vpath %.c $(sort $(dir $(ARDUINO_LIB_C_SOURCES)))
-#vpath %.cpp $(sort $(dir $(ARDUINO_LIB_C_SOURCES)))
+ARDUINO_LIB_OBJECTS = $(addprefix $(BUILD_DIR)/ARDUINO_LIB/,$(patsubst %c,%o,$(patsubst %cpp,%o,$(notdir $(ARDUINO_LIB_C_SOURCES)))))
+vpath %.c $(sort $(dir $(ARDUINO_LIB_C_SOURCES)))
+vpath %.cpp $(sort $(dir $(ARDUINO_LIB_C_SOURCES)))
 
 #ARDUINO_CORE_C_OBJECTS
 ARDUINO_CORE_OBJECTS = $(addprefix $(BUILD_DIR)/ARDUINO_CORE/,$(patsubst %c,%o,$(patsubst %cpp,%o,$(notdir $(ARDUINO_CORE_C_SOURCES)))))
@@ -374,70 +469,70 @@ vpath %.cpp $(sort $(dir $(HAL_C_SOURCES)))
 
 # list of all objects
 OBJECTS = \
-$(ARDUINO_CORE_OBJECTS) \
-$(ARDUINO_LIB_OBJECTS) \
-$(HAL_OBJECTS) \
+$(PROJECT_OBJECTS) \
 $(CMSIS_OBJECTS) \
-$(PROJECT_OBJECTS)
+$(ARDUINO_LIB_OBJECTS) \
+$(ARDUINO_CORE_OBJECTS) \
+$(HAL_OBJECTS)
 
 
 $(BUILD_DIR)/CMSIS/%.o: %.s
 	@echo "***** ***** ***** input = $^, output = $@***** ***** *****"
-	$(AS) $(ASFLAGS) $(addprefix -I,$(CMSIS_INCLUDES)) $(addprefix -I,$(C_INCLUDES)) $< -o $@
+	$(AS) $(ASFLAGS) $(addprefix -I,$(CMSIS_INCLUDES)) $< -o $@
 	@echo
 	@echo
 
 $(BUILD_DIR)/CMSIS/%.o: %.S
 	@echo "***** ***** ***** input = $^, output = $@***** ***** *****"
-	$(AS) $(ASFLAGS) $(addprefix -I,$(CMSIS_INCLUDES)) $(addprefix -I,$(C_INCLUDES)) $< -o $@
+	$(AS) $(ASFLAGS) $(addprefix -I,$(CMSIS_INCLUDES)) $< -o $@
 	@echo
 	@echo
 
 $(BUILD_DIR)/PROJECT/%.o: %.cpp
 	@echo "***** ***** ***** input = $^, output = $@***** ***** *****"
-	$(PP) $(CPPFLAGS) $(addprefix -I,$(C_INCLUDES)) $< -o $@
+	$(PP) $(CPPFLAGS) $(addprefix -I,$(PROJECT_C_INCLUDES)) $(addprefix -I,$(ARDUINO_LIB_INCLUDES)) $(addprefix -I,$(ARDUINO_CORE_INCLUDES)) $(addprefix -I,$(HAL_C_INCLUDES)) $< -o $@
 	@echo
 	@echo
 
 $(BUILD_DIR)/PROJECT/%.o: %.c
 	@echo "***** ***** ***** input = $^, output = $@***** ***** *****"
-	$(CC) $(CFLAGS) $(addprefix -I,$(C_INCLUDES))  $< -o $@
+	$(CC) $(CFLAGS) $(addprefix -I,$(PROJECT_C_INCLUDES)) $(addprefix -I,$(ARDUINO_LIB_INCLUDES)) $(addprefix -I,$(ARDUINO_CORE_INCLUDES)) $(addprefix -I,$(HAL_C_INCLUDES))  $< -o $@
 	@echo
 	@echo
 
 $(BUILD_DIR)/ARDUINO_LIB/%.o: %.cpp
 	@echo "***** ***** ***** input = $^, output = $@***** ***** *****"
-	$(PP) $(CPPFLAGS) $(addprefix -I,$(C_INCLUDES)) $< -o $@
+	$(PP) $(CPPFLAGS) $(addprefix -I,$(ARDUINO_LIB_INCLUDES)) $(addprefix -I,$(ARDUINO_CORE_INCLUDES)) $(addprefix -I,$(HAL_C_INCLUDES)) $< -o $@
 	@echo
 	@echo
 
 $(BUILD_DIR)/ARDUINO_LIB/%.o: %.c
 	@echo "***** ***** ***** input = $^, output = $@***** ***** *****"
-	$(CC) $(CFLAGS) $(addprefix -I,$(C_INCLUDES)) $< -o $@
+	$(CC) $(CFLAGS) $(addprefix -I,$(ARDUINO_LIB_INCLUDES)) $(addprefix -I,$(ARDUINO_CORE_INCLUDES)) $(addprefix -I,$(HAL_C_INCLUDES)) $< -o $@
 	@echo
 	@echo
 	
 $(BUILD_DIR)/ARDUINO_CORE/%.o: %.cpp
 	@echo "***** ***** ***** input = $^, output = $@***** ***** *****"
-	$(PP) $(CPPFLAGS) $(addprefix -I,$(C_INCLUDES)) $< -o $@
+	$(PP) $(CPPFLAGS) $(addprefix -I,$(ARDUINO_CORE_INCLUDES)) $(addprefix -I,$(HAL_C_INCLUDES)) $< -o $@
 	@echo
 	@echo
 	
 $(BUILD_DIR)/ARDUINO_CORE/%.o: %.c
 	@echo "***** ***** ***** input = $^, output = $@***** ***** *****"
-	$(CC) $(CFLAGS) $(addprefix -I,$(C_INCLUDES)) $< -o $@
+	$(CC) $(CFLAGS) $(addprefix -I,$(ARDUINO_CORE_INCLUDES)) $(addprefix -I,$(HAL_C_INCLUDES)) $< -o $@
 	@echo
 	@echo
 	
 $(BUILD_DIR)/HAL/%.o: %.cpp
 	@echo "***** ***** ***** input = $^, output = $@***** ***** *****"
-	$(PP) $(CPPFLAGS) $(addprefix -I,$(C_INCLUDES)) $< -o $@
+	$(PP) $(CPPFLAGS) $(addprefix -I,$(HAL_C_INCLUDES)) $< -o $@
 	@echo
 	@echo
 	
 $(BUILD_DIR)/HAL/%.o: %.c
 	@echo "***** ***** ***** input = $^, output = $@***** ***** *****"
-	$(CC) $(CFLAGS) $(addprefix -I,$(C_INCLUDES)) $< -o $@
+	$(CC) $(CFLAGS) $(addprefix -I,$(HAL_C_INCLUDES)) $< -o $@
 	@echo
 	@echo
 
