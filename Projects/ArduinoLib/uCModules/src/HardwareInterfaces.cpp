@@ -1,6 +1,8 @@
 #include "HardwareInterfaces.h"
 #include <Arduino.h>
 
+using namespace std;
+
 //Note, the ought to be deconstructed if the hardware interfaces are used
 //dynamically
 

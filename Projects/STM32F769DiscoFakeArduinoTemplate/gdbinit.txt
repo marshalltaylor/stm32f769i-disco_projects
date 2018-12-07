@@ -1,0 +1,3 @@
+handle SIGINT
+target ext:3333
+load

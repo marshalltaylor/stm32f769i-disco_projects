@@ -3,6 +3,8 @@
 
 #include <Arduino.h>
 #include <PanelDataObjects.h>
+#include <cstring>
+//using namespace std;
 
 //The abstract class GenericHardwareDescription must be inheireted
 // by the interface to whatever external driver is being used.  Data must be present
