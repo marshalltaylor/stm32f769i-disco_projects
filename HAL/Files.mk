@@ -37,6 +37,7 @@ $(HAL_DIR)/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c \
 $(HAL_DIR)/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c \
 $(HAL_DIR)/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c \
 $(HAL_DIR)/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c \
+$(HAL_DIR)/FW_F7_V1.12.0/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_uart.c \
 $(HAL_DIR)/startup_stm32f769xx.s
 
 HAL_C_INCLUDES = \

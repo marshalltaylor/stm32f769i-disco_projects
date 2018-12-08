@@ -23,6 +23,8 @@
 #define ARDUINO_MAIN
 #include "interface.h"
 #include "Arduino.h"
+
+#include "configuration.h"
 // Weak empty variant initialization function.
 // May be redefined by variant files.
 //void initVariant() __attribute__((weak));
@@ -64,16 +66,17 @@ int main( void )
 	{
 		//HAL_GPIO_TogglePin(GPIOJ, GPIO_PIN_13);
 		//CDC_Transmit_HS((uint8_t*)"hello world!", 8);
-		for( uint32_t i = 0; i < 0x200000; i++ )
+		for( uint32_t i = 0; i < 0x800000; i++ )
 		{
 			nopVar++;
 		}
 		digitalWrite(D13, 1);
-		for( uint32_t i = 0; i < 0x200000; i++ )
+		for( uint32_t i = 0; i < 0x800000; i++ )
 		{
 			nopVar++;
 		}
 		digitalWrite(D13, 0);
+		HAL_UART_Transmit(&huart6, (uint8_t*)"Hullo fuks\n", 11, 4000);
 		}
 
 	//pinMode(D13, OUTPUT);
